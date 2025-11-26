@@ -1,9 +1,14 @@
 <meta>
     <info name="SA-Menu" author="Rick" type="script" version="1.0.0" />
+
+    <!-- Config for menu -->
+    <file src="shared/config.lua" type="shared">
+
     <script src="client/utilitiles.lua" type="client" cache="false"/>
     <script src="client/main.lua" type="client" cache="false"/>
-    <script src="client/example.lua" type="client" cache="false"/>  
-    <script src="server/example.lua" type="server" cache="false"/>
+    
+    <script src="client/example_menu.lua" type="client" cache="false"/>  
+    <script src="server/server_functions.lua" type="server" cache="false"/>
     
     <file src="client/files/fonts/beckett.ttf" type="client"/>
     <file src="client/files/fonts/tahoma-bold.ttf" type="client"/>

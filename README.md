@@ -6,6 +6,9 @@
 
 ## Client Functions
 
+<details>
+<summary> Functions </summary>
+
 ### createMenu
 Paramters:
 * float position X
@@ -80,10 +83,12 @@ setTypeMenu(theMenu, "shop")
 setMenuColumn(theMenu, "Products", "Price")
 ```
 
-
-
+</details>
 
 ## Clientside event
+
+<details>
+<summary> Events </summary>
 
 ### onClientMenuSelect
 Paramters:
@@ -110,3 +115,11 @@ function exampleEscape(theMenu)
 end
 addEventHandler("onClientMenuSelect", theMenu, exampleEscape)
 ```
+
+</details>
+
+
+
+# Credits
+Credit to httpRick on GitHub for this Menu resource
+* https://github.com/httpRick/SA-Menu

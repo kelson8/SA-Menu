@@ -21,7 +21,7 @@ Ammunation.config = {
 
 
 Ammunation.Menu[1] = {}
-Ammunation.Menu[1].window = createMenu(85, 350, "Ammu-Nation")
+Ammunation.Menu[1].window = createMenu(85, 350, menuTitle)
 Ammunation.Menu[1].Items = {}
 Ammunation.Menu[1].Items[1] = createItem(Ammunation.Menu[1].window,"Pistols")
 Ammunation.Menu[1].Items[2] = createItem(Ammunation.Menu[1].window,"Micro SMGs")
@@ -33,55 +33,55 @@ Ammunation.Menu[1].Items[7] = createItem(Ammunation.Menu[1].window,"Rifles")
 Ammunation.Menu[1].Items[8] = createItem(Ammunation.Menu[1].window,"Assault")
 
 Ammunation.Menu[2] = {}
-Ammunation.Menu[2].window = createMenu(85, 350, "Ammu-Nation")
+Ammunation.Menu[2].window = createMenu(85, 350, menuTitle)
 Ammunation.Menu[2].Items = {}
 Ammunation.Menu[2].Items[1] = createItem(Ammunation.Menu[2].window,"9mm")
 Ammunation.Menu[2].Items[2] = createItem(Ammunation.Menu[2].window,"Silenced 9mm")
 Ammunation.Menu[2].Items[3] = createItem(Ammunation.Menu[2].window,"Desert Eagle")
 
 Ammunation.Menu[3] = {}
-Ammunation.Menu[3].window = createMenu(85, 350, "Ammu-Nation")
+Ammunation.Menu[3].window = createMenu(85, 350, menuTitle)
 Ammunation.Menu[3].Items = {}
 Ammunation.Menu[3].Items[1] = createItem(Ammunation.Menu[3].window,"Tec9")
 Ammunation.Menu[3].Items[2] = createItem(Ammunation.Menu[3].window,"Micro SMG")
 
 Ammunation.Menu[3] = {}
-Ammunation.Menu[3].window = createMenu(85, 350, "Ammu-Nation")
+Ammunation.Menu[3].window = createMenu(85, 350, menuTitle)
 Ammunation.Menu[3].Items = {}
 Ammunation.Menu[3].Items[1] = createItem(Ammunation.Menu[3].window,"Tec9")
 Ammunation.Menu[3].Items[2] = createItem(Ammunation.Menu[3].window,"Micro SMG")
 
 Ammunation.Menu[4] = {}
-Ammunation.Menu[4].window = createMenu(85, 350, "Ammu-Nation")
+Ammunation.Menu[4].window = createMenu(85, 350, menuTitle)
 Ammunation.Menu[4].Items = {}
 Ammunation.Menu[4].Items[1] = createItem(Ammunation.Menu[4].window,"Shotgun")
 Ammunation.Menu[4].Items[2] = createItem(Ammunation.Menu[4].window,"Sawnoff Shotgun")
 Ammunation.Menu[4].Items[3] = createItem(Ammunation.Menu[4].window,"Combat Shotgun")
 
 Ammunation.Menu[5] = {}
-Ammunation.Menu[5].window = createMenu(85, 350, "Ammu-Nation")
+Ammunation.Menu[5].window = createMenu(85, 350, menuTitle)
 Ammunation.Menu[5].Items = {}
 Ammunation.Menu[5].Items[1] = createItem(Ammunation.Menu[5].window,"Grenades")
 Ammunation.Menu[5].Items[2] = createItem(Ammunation.Menu[5].window,"Remote Explosives")
 
 Ammunation.Menu[6] = {}
-Ammunation.Menu[6].window = createMenu(85, 350, "Ammu-Nation")
+Ammunation.Menu[6].window = createMenu(85, 350, menuTitle)
 Ammunation.Menu[6].Items = {}
 Ammunation.Menu[6].Items[1] = createItem(Ammunation.Menu[6].window,"Body Armor")
 
 Ammunation.Menu[7] = {}
-Ammunation.Menu[7].window = createMenu(85, 350, "Ammu-Nation")
+Ammunation.Menu[7].window = createMenu(85, 350, menuTitle)
 Ammunation.Menu[7].Items = {}
 Ammunation.Menu[7].Items[1] = createItem(Ammunation.Menu[7].window,"SMG")
 
 Ammunation.Menu[8] = {}
-Ammunation.Menu[8].window = createMenu(85, 350, "Ammu-Nation")
+Ammunation.Menu[8].window = createMenu(85, 350, menuTitle)
 Ammunation.Menu[8].Items = {}
 Ammunation.Menu[8].Items[1] = createItem(Ammunation.Menu[8].window,"Rifle")
 Ammunation.Menu[8].Items[2] = createItem(Ammunation.Menu[8].window,"Sniper rifle")
 
 Ammunation.Menu[9] = {}
-Ammunation.Menu[9].window = createMenu(85, 350, "Ammu-Nation")
+Ammunation.Menu[9].window = createMenu(85, 350, menuTitle)
 Ammunation.Menu[9].Items = {}
 Ammunation.Menu[9].Items[1] = createItem(Ammunation.Menu[9].window,"AK47")
 Ammunation.Menu[9].Items[2] = createItem(Ammunation.Menu[9].window,"M4")
@@ -89,7 +89,7 @@ Ammunation.Menu[9].Items[2] = createItem(Ammunation.Menu[9].window,"M4")
 
 function createWeaponOffer(str, price, id)
 	Ammunation.Menu[10] = {}
-	Ammunation.Menu[10].window = createMenu(85, 350, "Ammu-Nation")
+	Ammunation.Menu[10].window = createMenu(85, 350, menuTitle)
 	Ammunation.Menu[10].Items = {}
 	Ammunation.Menu[10].Items[1] = createItem(Ammunation.Menu[10].window, str, price.."$")
 	showTips("SPACE Buy\nRETURN Back.")
@@ -98,9 +98,12 @@ function createWeaponOffer(str, price, id)
 	showMenu(Ammunation.Menu[10].window)
 
 	addEventHandler("onClientMenuSelect", Ammunation.Menu[10].Items[1], function()
-		if getPlayerMoney(localPlayer) >= Ammunation.config[str].price then
-			triggerServerEvent("giveWeaponBuy", localPlayer, Ammunation.config[str].id, Ammunation.config[str].round, Ammunation.config[str].price)
-		end
+		-- Removed money check, made another function for this.
+		triggerServerEvent("giveWeapon", localPlayer, Ammunation.config[str].id, Ammunation.config[str].round)
+
+		-- if getPlayerMoney(localPlayer) >= Ammunation.config[str].price then
+			-- triggerServerEvent("giveWeaponBuy", localPlayer, Ammunation.config[str].id, Ammunation.config[str].round, Ammunation.config[str].price)
+		-- end
 	end)
 
 	addEventHandler("onClientMenuExit", Ammunation.Menu[10].window, function()
@@ -137,4 +140,4 @@ for i=2,9 do
 	addEventHandler("onClientMenuExit", Ammunation.Menu[i].window, showAmmunationMenu)
 end
 
-showAmmunationMenu()
+bindKey(menuBindKey, "down", showAmmunationMenu)
