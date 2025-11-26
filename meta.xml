@@ -2,7 +2,7 @@
     <info name="SA-Menu" author="Rick" type="script" version="1.0.0" />
 
     <!-- Config for menu -->
-    <file src="shared/config.lua" type="shared">
+    <file src="shared/config.lua" type="shared"/>
 
     <script src="client/utilitiles.lua" type="client" cache="false"/>
     <script src="client/main.lua" type="client" cache="false"/>
